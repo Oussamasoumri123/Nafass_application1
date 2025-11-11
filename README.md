@@ -1,16 +1,15 @@
-# nafass_application
+# Nafass Application
 
-A new Flutter project.
+Offline-first Flutter application that stores all user generated data in local
+JSON files.
 
-## Getting Started
+## Local authentication data
 
-This project is a starting point for a Flutter application.
+The authentication module persists users in a writable copy of the
+`assets/data/user.json` asset. On first launch the bundled asset is copied to a
+`data_dev` directory that sits alongside the project source. Subsequent
+read/write operations update the JSON file inside that folder, which keeps the
+bundled asset unchanged for version control.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+After registering an account you will find the generated file at
+`data_dev/user.json` relative to the project root.

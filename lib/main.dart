@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'features/auth/logic/auth_provider.dart';
 import 'routes/app_router.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const NafassApp());
@@ -26,6 +27,6 @@ class NafassApp extends StatelessWidget {
           ),
           initialRoute: '/login',
           routes: AppRouter.routes,
-        ),    );
+        ),);
   }
 }

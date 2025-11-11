@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nafass_application/features/auth/logic/auth_provider.dart';
 import 'package:provider/provider.dart';
-
-
+import '../../logic/auth_provider.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});

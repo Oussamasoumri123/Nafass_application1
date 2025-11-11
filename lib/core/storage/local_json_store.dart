@@ -3,19 +3,21 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
 
-/// A simple utility that keeps a JSON file in the application documents folder
-/// in sync with an asset bundled with the app. The asset acts as the initial
-/// seed while subsequent reads/writes operate on the local copy.
+/// A simple utility that keeps a JSON file in a writable project directory in
+/// sync with an asset bundled with the app. The asset acts as the initial seed
+/// while subsequent reads/writes operate on the local copy.
 class LocalJsonStore {
-  LocalJsonStore({this.baseAssetPath = 'assets/data'});
+  LocalJsonStore({
+    this.assetBasePath = 'assets/data',
+    this.runtimeDirectory = 'data_dev',
+  });
 
-  final String baseAssetPath;
+  final String assetBasePath;
+  final String runtimeDirectory;
 
   Future<Directory> _ensureDirectory() async {
-    final directory = await getApplicationDocumentsDirectory();
-    final dataDirectory = Directory('${directory.path}/$baseAssetPath');
+    final dataDirectory = Directory(runtimeDirectory);
     if (!await dataDirectory.exists()) {
       await dataDirectory.create(recursive: true);
     }
@@ -27,7 +29,7 @@ class LocalJsonStore {
     final file = File('${directory.path}/$fileName');
 
     if (!await file.exists()) {
-      final assetPath = '$baseAssetPath/$fileName';
+      final assetPath = '$assetBasePath/$fileName';
       try {
         final assetContent = await rootBundle.loadString(assetPath);
         await file.writeAsString(assetContent);
