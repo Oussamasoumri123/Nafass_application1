@@ -83,6 +83,15 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 24),
+                  child: Image.asset(
+                    'assets/images/LogoNafass.png',
+                    height: 120,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+
                 Text(
                   'Login to continue',
                   style: Theme.of(context).textTheme.headlineSmall,

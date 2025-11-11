@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nafass_application/features/auth/logic/auth_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:nafass_application/features/weather/ui/weather_badge.dart';
+
 
 
 class HomePage extends StatelessWidget {
@@ -80,6 +82,10 @@ class HomePage extends StatelessWidget {
                           fullName: '${user?.lastName} ${user?.username}',
                           email: user?.email,
                           isDark: isDark,
+                        ),
+                        const Align(
+                          alignment: Alignment.centerLeft,
+                          child: WeatherBadge(),
                         ),
                         const SizedBox(height: 24),
                         GridView.count(
